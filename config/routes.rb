@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-
+  
+  root to: "homes#top"
+  get "home/about" => "homes#about", as: 'about'
+  
+  namespace :public do
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/confirm'
+    resources :items
+  end
 
   namespace :admin do
     get 'items/index'
@@ -10,7 +19,8 @@ Rails.application.routes.draw do
     resources :items
     resources :genres
     resources :customers
-    get 'homes/top'
+    resources :orders
+    get '' => 'homes#top'
   end
   devise_for :admins
   devise_for :customers
