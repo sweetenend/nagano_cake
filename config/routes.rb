@@ -1,20 +1,25 @@
 Rails.application.routes.draw do
 
-  root to: "homes#top"
-  get "home/about" => "homes#about", as: 'about'
-
   namespace :public do
-    get 'customers/show'
+    get 'addresses/index'
+    get 'addresses/edit'
+  end
+  root to: "homes#top"
+  get "home/about" => "homes#about"
+
+  scope module: :public do
+    get 'customers/my_page' =>"customers#show"
     get 'customers/edit'
-    get 'customers/confirm'
+    get 'customers/confirm' =>"customers#confirm"
+    
+    get '' => 'homes#top'
+    get 'about' => 'homes#about', as: 'about'
+    resources :cart_items, only:[:index, :update, :create, :destroy]
+    delete 'cart_items/destroy_all' => "cart_items#destroy_all"
     resources :items
   end
 
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
     resources :items
     resources :genres
     resources :customers
