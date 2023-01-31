@@ -1,22 +1,27 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-  end
   root to: "homes#top"
   get "home/about" => "homes#about"
 
   scope module: :public do
     get 'customers/my_page' =>"customers#show"
-    get 'customers/edit'
+    get 'customers/information/edit' => "customers#edit"
+    patch 'customers/information/edit' => "customers#update"
     get 'customers/confirm' =>"customers#confirm"
+    patch '/customers/withdrawal' => "customers#withdrawal"
     
     get '' => 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :cart_items, only:[:index, :update, :create, :destroy]
     delete 'cart_items/destroy_all' => "cart_items#destroy_all"
     resources :items
+    resources :addresses
+    get 'orders' => "orders#index"
+    post 'orders' => "orders#create"
+    get 'orders/new' => "orders#new"
+    post 'orders/confirm' => "orders#confirm"
+    get 'orders/done' => "orders#done"
+    get 'order/:' => "orders#show"
   end
 
   namespace :admin do
