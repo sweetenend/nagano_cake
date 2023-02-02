@@ -4,6 +4,8 @@ class Public::ItemsController < ApplicationController
   end
 
   def show
+    @item=Items.find(item_params[:id])
+    @cart_item=CartItems.new
   end
   
   private
