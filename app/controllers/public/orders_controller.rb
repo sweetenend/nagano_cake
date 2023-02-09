@@ -1,9 +1,10 @@
 class Public::OrdersController < ApplicationController
   def new
-    @order=Orders.new
+    @order=Order.new
   end
   
   def index
+    @orders=Order.all
   end
   
   def create

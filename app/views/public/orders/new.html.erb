@@ -15,9 +15,12 @@
   
   <div>
     <p>お届け先</p>
-    <%= f.radio_button :address, current_customers.address %>ご自身の住所
-    <%= current_customers.postal_code %><%= current_customers.address %>
+    <%= f.radio_button :address, :address %>ご自身の住所
+    <%= current_customer.postal_code %><%= current_customer.address %>
     
+    <%= f.radio_button :address, :address_id %>登録済みの住所
+    <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
     
   </div>
+  <% end %>
 </div>

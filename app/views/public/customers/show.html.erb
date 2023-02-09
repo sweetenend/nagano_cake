@@ -1,16 +1,16 @@
 <h4>マイページ</h4>
 <div>
   <p>登録情報</p>
-  <%= link_to "編集する", public_addresses_edit_path %>
+  <%= link_to "編集する", customers_information_edit_path %>
 </div>
 
 <div>
   <div>
-    <p>氏名</p><%= @customer.first_name @customer.last_name %>
+    <p>氏名</p><%= @customer.first_name %><%= @customer.last_name %>
   </div>
   
   <div>
-    <p>カナ</p><%= @customer.first_name_kana @customer.last_name_kana %>
+    <p>カナ</p><%= @customer.first_name_kana %><%= @customer.last_name_kana %>
   </div>
   
   <div>

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     get 'orders/new' => "orders#new"
     post 'orders/confirm' => "orders#confirm"
     get 'orders/done' => "orders#done"
-    get 'order/:' => "orders#show"
+    get 'order/' => "orders#show"
   end
 
   namespace :admin do
