@@ -1,20 +1,26 @@
-<div>
-  <h4>商品一覧</h4>
-  <h5>（全<%= @items.count %>件）</h5>
-</div>
-
-<div>
-  <% @items.each do |item| %>
-    <div>
-      <div>
-        <%= image_tag @items.iamge %>
-      </div>
-      <div>
-        <%= @items.name %>
-      </div>
-      <div>
-        ￥<%= @items.price %>
-      </div>
+<div class="container">
+  <div class="row g-5">
+    <div class="col-2">
+      <h4>商品一覧</h4>
     </div>
+    <div class="col-2">
+      <h5>（全<%= @items.count %>件）</h5>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-2">
+        <div>
+          <%= image_tag item.get_image(100,100) %>
+        </div>
+        <div>
+          <%= item.name %>
+        </div>
+        <div>
+          ￥<%= item.price %>
+        </div>
+      </div>
     <% end %>
+  </div>
 </div>

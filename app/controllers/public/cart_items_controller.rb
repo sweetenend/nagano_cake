@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-    @cart_items=CartItems.all
+    @cart_items=CartItem.all
   end
   
   def update
@@ -24,6 +24,7 @@ class Public::CartItemsController < ApplicationController
       @cart_item.save
     else
       @cart_item_new.save
+    end
   end
   
   private

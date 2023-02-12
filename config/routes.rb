@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
-  root to: "homes#top"
-  get "home/about" => "homes#about"
+  #root to: "homes#top"
 
   scope module: :public do
     get 'customers/my_page' =>"customers#show"
-    get 'customers/information/edit' => "customers#edit"
+    get 'customers/information/:id/edit' => "customers#edit"
     patch 'customers/information/edit' => "customers#update"
     get 'customers/confirm' =>"customers#confirm"
     patch '/customers/withdrawal' => "customers#withdrawal"
     
-    get '' => 'homes#top'
+    root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
     resources :cart_items, only:[:index, :update, :create, :destroy]
     delete 'cart_items/destroy_all' => "cart_items#destroy_all"
